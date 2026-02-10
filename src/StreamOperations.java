@@ -1,11 +1,10 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.OptionalDouble;
 
 /**
- * Demonstrates sum and average operations.
+ * Demonstrates match operations in streams.
  *
- * UC2.7 - Find sum and average of even numbers.
+ * UC2.8 - allMatch and anyMatch usage.
  */
 public class StreamOperations {
 
@@ -14,20 +13,15 @@ public class StreamOperations {
         List<Integer> numbers =
                 Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        int sum =
+        boolean allEven =
                 numbers.stream()
-                        .filter(n -> n % 2 == 0)
-                        .mapToInt(Integer::intValue)
-                        .sum();
+                        .allMatch(n -> n % 2 == 0);
 
-        OptionalDouble average =
+        boolean anyEven =
                 numbers.stream()
-                        .filter(n -> n % 2 == 0)
-                        .mapToInt(Integer::intValue)
-                        .average();
+                        .anyMatch(n -> n % 2 == 0);
 
-        System.out.println("Sum of even numbers: " + sum);
-        average.ifPresent(avg ->
-                System.out.println("Average of even numbers: " + avg));
+        System.out.println("All numbers even? " + allEven);
+        System.out.println("Any number even? " + anyEven);
     }
 }
