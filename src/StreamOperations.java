@@ -1,14 +1,11 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+import java.util.OptionalDouble;
 
 /**
- * Demonstrates finding min and max values in streams.
+ * Demonstrates sum and average operations.
  *
- * UC2.6 - Find min and max even numbers.
- *
- * @author Adithya
- * @version 6.0
+ * UC2.7 - Find sum and average of even numbers.
  */
 public class StreamOperations {
 
@@ -17,20 +14,20 @@ public class StreamOperations {
         List<Integer> numbers =
                 Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        Optional<Integer> minEven =
+        int sum =
                 numbers.stream()
                         .filter(n -> n % 2 == 0)
-                        .min(Integer::compareTo);
+                        .mapToInt(Integer::intValue)
+                        .sum();
 
-        Optional<Integer> maxEven =
+        OptionalDouble average =
                 numbers.stream()
                         .filter(n -> n % 2 == 0)
-                        .max(Integer::compareTo);
+                        .mapToInt(Integer::intValue)
+                        .average();
 
-        minEven.ifPresent(min ->
-                System.out.println("Min Even: " + min));
-
-        maxEven.ifPresent(max ->
-                System.out.println("Max Even: " + max));
+        System.out.println("Sum of even numbers: " + sum);
+        average.ifPresent(avg ->
+                System.out.println("Average of even numbers: " + avg));
     }
 }
