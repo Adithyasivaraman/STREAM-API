@@ -3,12 +3,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Demonstrates collecting stream results.
+ * Demonstrates filtering stream elements.
  *
- * UC2.3 - Store transformed values using collect().
+ * UC2.4 - Filter even numbers using filter().
  *
  * @author Adithya
- * @version 3.0
+ * @version 4.0
  */
 public class StreamOperations {
 
@@ -17,11 +17,11 @@ public class StreamOperations {
         List<Integer> numbers =
                 Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        List<Integer> doubledNumbers =
+        List<Integer> evenNumbers =
                 numbers.stream()
-                        .map(n -> n * 2)
+                        .filter(n -> n % 2 == 0)
                         .collect(Collectors.toList());
 
-        doubledNumbers.forEach(System.out::println);
+        evenNumbers.forEach(System.out::println);
     }
 }
