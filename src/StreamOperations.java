@@ -1,14 +1,14 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 /**
- * Demonstrates filtering stream elements.
+ * Demonstrates finding elements in streams.
  *
- * UC2.4 - Filter even numbers using filter().
+ * UC2.5 - Find first even number using findFirst().
  *
  * @author Adithya
- * @version 4.0
+ * @version 5.0
  */
 public class StreamOperations {
 
@@ -17,11 +17,11 @@ public class StreamOperations {
         List<Integer> numbers =
                 Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        List<Integer> evenNumbers =
+        Optional<Integer> firstEven =
                 numbers.stream()
                         .filter(n -> n % 2 == 0)
-                        .collect(Collectors.toList());
+                        .findFirst();
 
-        evenNumbers.forEach(System.out::println);
+        firstEven.ifPresent(System.out::println);
     }
 }
