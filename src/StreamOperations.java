@@ -2,26 +2,19 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Demonstrates match operations in streams.
+ * Demonstrates sorting using streams.
  *
- * UC2.8 - allMatch and anyMatch usage.
+ * UC2.9 - Sort numbers in ascending order.
  */
 public class StreamOperations {
 
     public static void main(String[] args) {
 
         List<Integer> numbers =
-                Arrays.asList(1, 2, 3, 4, 5, 6);
+                Arrays.asList(6, 3, 1, 5, 2, 4);
 
-        boolean allEven =
-                numbers.stream()
-                        .allMatch(n -> n % 2 == 0);
-
-        boolean anyEven =
-                numbers.stream()
-                        .anyMatch(n -> n % 2 == 0);
-
-        System.out.println("All numbers even? " + allEven);
-        System.out.println("Any number even? " + anyEven);
+        numbers.stream()
+                .sorted()
+                .forEach(System.out::println);
     }
 }
