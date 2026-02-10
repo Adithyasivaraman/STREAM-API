@@ -3,12 +3,12 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Demonstrates finding elements in streams.
+ * Demonstrates finding min and max values in streams.
  *
- * UC2.5 - Find first even number using findFirst().
+ * UC2.6 - Find min and max even numbers.
  *
  * @author Adithya
- * @version 5.0
+ * @version 6.0
  */
 public class StreamOperations {
 
@@ -17,11 +17,20 @@ public class StreamOperations {
         List<Integer> numbers =
                 Arrays.asList(1, 2, 3, 4, 5, 6);
 
-        Optional<Integer> firstEven =
+        Optional<Integer> minEven =
                 numbers.stream()
                         .filter(n -> n % 2 == 0)
-                        .findFirst();
+                        .min(Integer::compareTo);
 
-        firstEven.ifPresent(System.out::println);
+        Optional<Integer> maxEven =
+                numbers.stream()
+                        .filter(n -> n % 2 == 0)
+                        .max(Integer::compareTo);
+
+        minEven.ifPresent(min ->
+                System.out.println("Min Even: " + min));
+
+        maxEven.ifPresent(max ->
+                System.out.println("Max Even: " + max));
     }
 }
