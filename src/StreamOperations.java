@@ -2,12 +2,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Demonstrates Java Stream creation and iteration.
+ * Demonstrates Stream transformation.
  *
- * UC2.1 - Iterate stream using forEach.
+ * UC2.2 - Transform elements using map().
  *
  * @author Adithya
- * @version 1.0
+ * @version 2.0
  */
 public class StreamOperations {
 
@@ -17,6 +17,7 @@ public class StreamOperations {
                 Arrays.asList(1, 2, 3, 4, 5, 6);
 
         numbers.stream()
+                .map(n -> n * 2)
                 .forEach(System.out::println);
     }
 }
